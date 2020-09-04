@@ -1,3 +1,5 @@
+require 'byebug'
+
 class User < ApplicationRecord
     # Follow Associations:
     # source: :follower matches with the belong_to :follower identification in the Follow model
@@ -38,7 +40,22 @@ class User < ApplicationRecord
     # end
 
 
-    def twitter_page(username)
+    # def twitter_page(username)
         
+    # end
+
+    def follow(username)
+        user = User.find_by(username: username)
+        Follow.create(follower_id: self.id, followee_id: user.id)
     end
+
+    def following
+        self.followee_follows.map{|follow| User.find(follow.followee_id)}
+    end
+
+    def followed_by
+        self.follower_follows.map{|follow| User.find(follow.follower_id)}
+    end
+
+
 end

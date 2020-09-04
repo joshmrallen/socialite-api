@@ -16,18 +16,22 @@ ActiveRecord::Schema.define(version: 2020_09_04_144318) do
   enable_extension "plpgsql"
 
   create_table "follows", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followee_id"
+    t.bigint "follower_id"
+    t.bigint "followee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["followee_id"], name: "index_follows_on_followee_id"
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "receiver_id"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
