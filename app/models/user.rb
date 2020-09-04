@@ -25,5 +25,20 @@ class User < ApplicationRecord
     has_many :receiver_messages, foreign_key: :sender_id, class_name: "Message"
 
 
+    #### DO AFTER MESSAGE AND FOLLOW FEATURES ARE COMPLETE ###
+    # https://developer.twitter.com/en/docs/tutorials/explore-a-users-tweets
 
+    # def self.twitter_call
+    #     client = Twitter::REST::Client.new do |config|
+    #         config.consumer_key        = ENV['client_id']
+    #         config.consumer_secret     = ENV['client_secret']
+    #         # config.access_token        = ENV['bearer_token']
+    #         # config.access_token_secret = "YOUR_ACCESS_SECRET"
+    #     end
+    # end
+
+
+    def twitter_page(username)
+        
+    end
 end
