@@ -21,6 +21,12 @@ class UsersController < ApplicationController
         render json: followees
     end
 
+    def update
+        user = User.find(params[:id])
+        # take in button dataset.username for person to follow
+        # call user.follow to associate that username with our user's followees
+    end
+
     private
         def user_params
             params.require(:user).permit(:username, :first_name, :last_name)

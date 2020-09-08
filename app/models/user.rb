@@ -50,14 +50,24 @@ class User < ApplicationRecord
     end
 
     def following
-        self.followee_follows.map{|follow| User.find(follow.followee_id)}
+        self.followee_follows.map do |follow|
+            {
+                follow_id: follow.id,
+                user: User.find(follow.followee_id)
+            } 
+        end
     end
 
     def followed_by
-        self.follower_follows.map{|follow| User.find(follow.follower_id)}
+        self.follower_follows.map do |follow| 
+            {
+                follow_id: follow.id,
+                user: User.find(follow.follower_id)
+            }
+        end
     end
 
-    def sent_messages_array
+    def received_messages_array
         sent = []
 
         self.sender_messages.each_with_index do |message, index|
@@ -70,7 +80,7 @@ class User < ApplicationRecord
         return sent     
     end
 
-    def received_messages_array
+    def sent_messages_array
         received = []
 
         self.receiver_messages.each_with_index do |message, index|
