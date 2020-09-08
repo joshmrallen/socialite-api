@@ -6,8 +6,8 @@ class UsersController < ApplicationController
     end
 
     def show
-        #home page after logging in
-        
+        user = User.find(params[:id])
+        render json: user
     end
 
     def followers

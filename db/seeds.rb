@@ -1,9 +1,8 @@
-require 'dotenv-rails'
-require 'twitter'
 require 'byebug'
 
 User.delete_all
 Follow.delete_all
+Message.delete_all
 
 
 User.create(username: 'irosen419', first_name: 'Ian', last_name: 'Rosen')
@@ -31,3 +30,13 @@ jenn.follow(josh.username)
 james.follow(ian.username)
 james.follow(jenn.username)
 james.follow(josh.username)
+
+
+Message.create(sender_id: ian.id, receiver_id: jenn.id, content: "Hello World")
+Message.create(sender_id: ian.id, receiver_id: josh.id, content: "Coding is kewl")
+Message.create(sender_id: james.id, receiver_id: ian.id, content: "Hi Ian")
+Message.create(sender_id: josh.id, receiver_id: ian.id, content: "What's up Ian?")
+
+
+
+puts "#{User.all.count}"

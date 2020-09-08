@@ -1,4 +1,6 @@
 require 'byebug'
+require 'dotenv/load'
+require 'twitter'
 
 class User < ApplicationRecord
     # Follow Associations:
@@ -13,8 +15,6 @@ class User < ApplicationRecord
     # followee_follows "names" the Follow join table for accessing through the followee association
     # who the user follows; user.followee_follows shows all the users who follow this particular user
     has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
-
-
 
     
     # Message Associations:
@@ -34,11 +34,11 @@ class User < ApplicationRecord
     #     client = Twitter::REST::Client.new do |config|
     #         config.consumer_key        = ENV['client_id']
     #         config.consumer_secret     = ENV['client_secret']
-    #         # config.access_token        = ENV['bearer_token']
-    #         # config.access_token_secret = "YOUR_ACCESS_SECRET"
+    #         config.access_token        = ENV['access_token']
+    #         config.access_token_secret = ENV['access_token_secret']
     #     end
+    #     client.user("jyoo91")
     # end
-
 
     # def twitter_page(username)
         
@@ -57,5 +57,12 @@ class User < ApplicationRecord
         self.follower_follows.map{|follow| User.find(follow.follower_id)}
     end
 
+    def sent_messages
+        self.sender_messages.map{|message| User.find(message.sender_id)}
+    end
+
+    def received_messages
+        self.receiver_messages.map{|message| User.find(message.receiver_id)}
+    end
 
 end
