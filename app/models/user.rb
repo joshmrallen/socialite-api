@@ -57,12 +57,42 @@ class User < ApplicationRecord
         self.follower_follows.map{|follow| User.find(follow.follower_id)}
     end
 
-    def sent_messages
-        self.sender_messages.map{|message| User.find(message.sender_id)}
+    def sent_messages_array
+        sent = []
+
+        self.sender_messages.each_with_index do |message, index|
+            sent[index] = {
+                sender: User.find(message.sender_id),
+                receiver: User.find(message.receiver_id),
+                content: message.content
+            } 
+        end
+        return sent     
     end
 
-    def received_messages
-        self.receiver_messages.map{|message| User.find(message.receiver_id)}
+    def received_messages_array
+        received = []
+
+        self.receiver_messages.each_with_index do |message, index|
+            received[index] = {
+                sender: User.find(message.sender_id),
+                receiver: User.find(message.receiver_id),
+                content: message.content
+            }
+        end
+        return received
+    end
+
+    def json_object
+        object = {
+            user_info: self,
+            followers: self.followed_by,
+            followees: self.following,
+            messages: {
+                sent: self.sent_messages_array,
+                received: self.received_messages_array
+            }
+        }
     end
 
 end
