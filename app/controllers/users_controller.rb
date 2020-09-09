@@ -7,8 +7,7 @@ class UsersController < ApplicationController
 
     def show
         user = User.find(params[:id])
-        object = user.json_object
-        render json: object
+        render json: UserSerializer.new(user).to_serialized_json
     end
 
     def followers

@@ -4,11 +4,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :username
       t.string :first_name
       t.string :last_name
-      t.references :followee
-      t.references :follower
-      t.references :sender
-      t.references :receiver
-
       t.timestamps
     end
   end

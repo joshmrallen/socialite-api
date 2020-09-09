@@ -21,9 +21,9 @@ josh.follow(ian.username)
 josh.follow(jenn.username)
 josh.follow(james.username)
 
-ian.follow(james.username)
-ian.follow(jenn.username)
-ian.follow(josh.username)
+# ian.follow(james.username)
+# ian.follow(jenn.username)
+# ian.follow(josh.username)
 
 jenn.follow(ian.username)
 jenn.follow(james.username)

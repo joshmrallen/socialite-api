@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'users/:id/followers', to: 'users#followers'
   get 'users/:id/followees', to: 'users#followees'
+  delete 'follows/delete', to: 'follows#destroy'
   
   resources :users
   resources :follows
