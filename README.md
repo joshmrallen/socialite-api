@@ -1,24 +1,17 @@
-# README for socialite
+# Short Description
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-dsfasdfads
-Things you may want to cover:
+Welcome to Socialite! Socialite is your key to becoming a social butterfly. Users can view their followers as well as people that they follow. Users can also browse a list of suggested users to follow. Users can view, send, and receive messages. 
 
-* Ruby version
+# Install Instructions
+1) Clone this repo (Socialite-Api)
+2) Run the server by typing in 'rails s' in your terminal
+3) Clone Socialite-Client (https://github.com/joshmrallen/socialite-client)
+4) Type in your terminal 'open index.html' to open the app
+5) Have fun!
 
-* System dependencies
+# Contributor's Guide
+Make a branch and have fun. Create a pull request for us to review. We are open to any suggestions or changes. 
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Credit for GIF images in Background: Burnt Toast 
+https://burnttoastcreative.com/
